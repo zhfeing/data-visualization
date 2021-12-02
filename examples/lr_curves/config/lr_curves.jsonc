@@ -1,0 +1,70 @@
+{
+    "curves": [
+        {
+            "data_fp": "tables/Val_Acc@1_cnn-Val-Acc@1.csv",
+            "label": "CNN",
+            "x_axis": "step",
+            "y_axis": "value",
+            "scale": 100,
+            "color": "#515151"
+        },
+        {
+            "data_fp": "tables/Val_Acc@1_vit-Val-Acc@1.csv",
+            "label": "ViT",
+            "x_axis": "step",
+            "y_axis": "value",
+            "scale": 100,
+            "color": "#F14040"
+        }
+    ],
+    "style": {
+        "line": "examples/lr_curves/config/lines",
+        "axes": "examples/lr_curves/config/axes_ticks_grids",
+        "font": "examples/lr_curves/config/font",
+        "figure": "examples/lr_curves/config/figure",
+        "saving_figures": "examples/lr_curves/config/saving_figures",
+        "text_latex": "examples/lr_curves/config/text_latex",
+        "legend_patches": "examples/lr_curves/config/legend_patches"
+    },
+    "draw": {
+        "axes": {
+            "title": "",
+            "x_label": "Epochs",
+            "y_label": "Acc",
+            "x_limit": [0, 245],
+            "y_limit": [70, 95],
+            "x_scale": null,
+            "y_scale": null,
+            "x_ticks": {
+                "major": {
+                    "min": 0,
+                    "max": 240,
+                    "step": 30,
+                    "labels": null,
+                    "format": null
+                },
+                "minor": null
+            },
+            "y_ticks": {
+                "major": {
+                    "min": 70,
+                    "max": 95,
+                    "step": 5,
+                    "labels": null,
+                    "format": null
+                },
+                "minor": {
+                    "min": 70,
+                    "max": 95,
+                    "step": 2.5,
+                    "labels": null,
+                    "format": null
+                }
+            }
+        },
+        "legend": {
+            "bbox_to_anchor": [0.99, 0.05]
+        }
+    },
+    "save_fp": "figures/lr_curves.pdf"
+}

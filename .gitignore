@@ -1,0 +1,15 @@
+.vscode
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+.vscode/
+.DS_Store
+save/
+run/
+run_*.sh
+backup
+figures

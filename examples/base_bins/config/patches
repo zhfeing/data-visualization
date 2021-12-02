@@ -1,0 +1,11 @@
+## ***************************************************************************
+## * PATCHES                                                                 *
+## ***************************************************************************
+## Patches are graphical objects that fill 2D space, like polygons or circles.
+## See https://matplotlib.org/api/artist_api.html#module-matplotlib.patches
+## for more information on patch properties.
+patch.linewidth:       0.8      # edge width in points.
+#patch.facecolor:       C0
+#patch.edgecolor:       black  # if forced, or patch is not filled
+#patch.force_edgecolor: False  # True to always use edgecolor
+#patch.antialiased:     True   # render patches in antialiased (no jaggies)

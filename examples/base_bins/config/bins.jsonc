@@ -1,0 +1,71 @@
+{
+    "bar": {
+        "data_fp": "tables/compression_bar.csv",
+        "x_axis": "method",
+        "y_axis": "AP",
+        "colormap": "Color4Bar",
+        "color": null,
+        "error":{
+            "err_pos": "err_p",
+            "err_neg": "err_n"
+        }
+    },
+    "style": {
+        "axes": "examples/base_bins/config/axes_ticks",
+        "font": "examples/base_bins/config/font",
+        "figure": "examples/base_bins/config/figure",
+        "saving_figures": "examples/base_bins/config/saving_figures",
+        "text_latex": "examples/base_bins/config/text_latex",
+        "legend_patches": "examples/base_bins/config/patches",
+        "errorbar": "examples/base_bins/config/errorbar"
+    },
+    "draw": {
+        "axes": {
+            "title": "",
+            "x_label": "",
+            "y_label": "AP",
+            "x_limit": [-0.5, 3.3],
+            "y_limit": [44, 49],
+            "x_scale": null,
+            "y_scale": null,
+            "x_ticks": {
+                "major": null,
+                "minor": null
+            },
+            "y_ticks": {
+                "major": {
+                    "min": 44,
+                    "max": 49,
+                    "step": 1,
+                    "labels": null,
+                    "format": null
+                },
+                "minor": {
+                    "min": 44,
+                    "max": 49,
+                    "step": 0.5,
+                    "labels": null,
+                    "format": null
+                }
+            },
+            "rotate_x": 5
+        },
+        "bar": {
+            "width": 0.45,
+            "align": "center",
+            "edgecolor": "#515151",
+            "linewidth": 0.8
+        },
+        "bar_label": {
+            "fmt": "%.1f",
+            "label_type": "edge",
+            "fontsize": "small"
+        },
+        "error_bar": {
+            "ecolor": "#515151",
+            "elinewidth": 0.8,
+            "markeredgewidth": 0.8
+        }
+    },
+    "save_fp": "figures/base_bins.pdf"
+}

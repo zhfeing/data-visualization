@@ -1,0 +1,21 @@
+## ***************************************************************************
+## * PATHS                                                                   *
+## ***************************************************************************
+#path.simplify: True  # When True, simplify paths by removing "invisible"
+                      # points to reduce file size and increase rendering
+                      # speed
+#path.simplify_threshold: 0.111111111111  # The threshold of similarity below
+                                          # which vertices will be removed in
+                                          # the simplification process.
+#path.snap: True  # When True, rectilinear axis-aligned paths will be snapped
+                  # to the nearest pixel when certain criteria are met.
+                  # When False, paths will never be snapped.
+#path.sketch: None  # May be None, or a 3-tuple of the form:
+                    # (scale, length, randomness).
+                    #     - *scale* is the amplitude of the wiggle
+                    #         perpendicular to the line (in pixels).
+                    #     - *length* is the length of the wiggle along the
+                    #         line (in pixels).
+                    #     - *randomness* is the factor by which the length is
+                    #         randomly scaled.
+#path.effects:
