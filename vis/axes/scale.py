@@ -11,7 +11,7 @@ SCALES = {
 }
 
 
-def scale(axes: plt.Axes, scale_cfg: Dict[str, Any] = None) -> mpl_scale.ScaleBase:
+def get_axes_scale(axes: plt.Axes, scale_cfg: Dict[str, Any] = None) -> mpl_scale.ScaleBase:
     if scale_cfg is None:
         return "linear"
     scale_cfg = copy.deepcopy(scale_cfg)

@@ -1,20 +1,17 @@
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
 from matplotlib.axes import Axes
 from matplotlib.lines import Line2D
 
-from vis.msic import apply_rc_styles
-from vis.axes import set_axes
 from vis.legend import set_legend
+from vis.colormap import get_colors
 
 
 def draw_lines(
+    axes: Axes,
     curve_cfg: List[Dict[str, Any]],
-    style_cfg: Dict[str, str],
     draw_cfg: Dict[str, Any]
-) -> Tuple[Figure, Axes]:
+):
     """
     Configuration of one curve:
         "data": pd.DataFrame
@@ -22,24 +19,24 @@ def draw_lines(
         "x_axis": column name for x axis
         "y_axis": column name for y axis
     """
-    apply_rc_styles(style_cfg)
-
-    fig, axes = plt.subplots()
-
-    # set axes
-    set_axes(axes, draw_cfg["axes"])
+    # set color, !color will overrite colormap!
+    color: List[str] = list()
+    if draw_cfg["colormap"] is not None:
+        color = get_colors(draw_cfg["colormap"])
+    if draw_cfg["color"] is not None:
+        color = draw_cfg["color"]
+    assert len(color) >= len(curve_cfg), "color is not enough"
 
     lines: List[Line2D] = list()
-    for curve in curve_cfg:
+    for i, curve in enumerate(curve_cfg):
         line = axes.plot(
             curve["x_axis"],
             curve["y_axis"],
             data=curve["data"],
             label=curve["label"],
-            color=curve["color"]
+            color=color[i]
         )
         lines.extend(line)
 
     set_legend(axes, lines, draw_cfg["legend"])
 
-    return fig, axes

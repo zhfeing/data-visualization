@@ -1,38 +1,51 @@
 {
     "curves": [
         {
-            "data_fp": "tables/Val_Acc@1_cnn-Val-Acc@1.csv",
+            "data_fp": "tables/Val_Loss_dict_cnn.cls-Val-Loss_dict.csv",
             "label": "CNN",
             "x_axis": "step",
-            "y_axis": "value",
-            "scale": 100
+            "y_axis": "value"
         },
         {
-            "data_fp": "tables/Val_Acc@1_vit-Val-Acc@1.csv",
+            "data_fp": "tables/Val_Loss_dict_vit.cls-Val-Loss_dict.csv",
             "label": "ViT",
             "x_axis": "step",
-            "y_axis": "value",
-            "scale": 100
+            "y_axis": "value"
+        },
+        {
+            "data_fp": "tables/Val_Loss_dict_cnn.kd.vit-Val-Loss_dict.csv",
+            "label": "CNN-KD",
+            "x_axis": "step",
+            "y_axis": "value"
+        },
+        {
+            "data_fp": "tables/Val_Loss_dict_vit.kd.cnn-Val-Loss_dict.csv",
+            "label": "ViT-KD",
+            "x_axis": "step",
+            "y_axis": "value"
         }
     ],
     "style": {
-        "line": "examples/lr_curves/config/lines.mplstyle",
-        "axes": "examples/lr_curves/config/axes_ticks_grids.mplstyle",
+        "line": "examples/loss/config/lines.mplstyle",
+        "axes": "examples/loss/config/axes_ticks_grids.mplstyle",
         "font": "examples/lr_curves/config/font.mplstyle",
         "figure": "examples/lr_curves/config/figure.mplstyle",
         "saving_figures": "examples/lr_curves/config/saving_figures.mplstyle",
         "text_latex": "examples/lr_curves/config/text_latex.mplstyle",
-        "legend_patches": "examples/lr_curves/config/legend_patches.mplstyle"
+        "legend_patches": "examples/loss/config/legend_patches.mplstyle"
     },
     "draw": {
         "axes": {
             "title": "",
             "x_label": "Epochs",
-            "y_label": "Acc",
+            "y_label": "Loss",
             "x_limit": [0, 245],
-            "y_limit": [70, 95],
+            "y_limit": [0.1, 2],
             "x_scale": null,
-            "y_scale": null,
+            "y_scale": {
+                "name": "log",
+                "base": 10
+            },
             "ticker": {
                 "formatter": {
                     "x_major": {
@@ -42,7 +55,7 @@
                     "x_minor": null,
                     "y_major": {
                         "name": "str_method",
-                        "fmt": "{x:.0f}"
+                        "fmt": "{x:.1f}"
                     },
                     "y_minor": null
                 },
@@ -55,25 +68,18 @@
                     },
                     "x_minor": null,
                     "y_major": {
-                        "name": "linear",
-                        "start": 70,
-                        "end": 95,
-                        "step": 5
+                        "name": "manual",
+                        "ticks": [0.1, 0.5, 1.0, 1.5, 2.0]
                     },
-                    "y_minor": {
-                        "name": "linear",
-                        "start": 70,
-                        "end": 95,
-                        "step": 2.5
-                    }
+                    "y_minor": null
                 }
             }
         },
         "legend": {
-            "bbox_to_anchor": [0.99, 0.05]
+            "bbox_to_anchor": [0.99, 0.99]
         },
         "colormap": "Color4Line",
         "color": null
     },
-    "save_fp": "figures/lr_curves.pdf"
+    "save_fp": "figures/loss.pdf"
 }

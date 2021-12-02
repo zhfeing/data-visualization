@@ -7,6 +7,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from vis.vis_bar import draw_bar
+from vis.msic import apply_rc_styles
+from vis.axes import set_axes
 
 
 def scale_curve(data: pd.DataFrame, column: str, scale_val: float = 100):
@@ -32,10 +34,16 @@ if __name__ == "__main__":
     data = pd.read_csv(bar_cfg["data_fp"])
     bar_cfg["data"] = data
 
-    # read style files
-    fig, axes = draw_bar(
+    # set style sheets
+    apply_rc_styles(cfg["style"])
+    fig, axes = plt.subplots()
+    # set axes
+    draw_cfg = cfg["draw"]
+    set_axes(axes, draw_cfg["axes"])
+
+    draw_bar(
+        axes=axes,
         bar_cfg=bar_cfg,
-        style_cfg=cfg["style"],
         draw_cfg=cfg["draw"]
     )
 

@@ -1,18 +1,15 @@
 from typing import Any, Dict, Tuple
 
 import pandas as pd
-import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
 
-from vis.msic import apply_rc_styles
-from vis.axes import set_axes
 from vis.colormap import get_colors
 
 
 def draw_bar(
+    axes: Axes,
     bar_cfg: Dict[str, Any],
-    style_cfg: Dict[str, str],
     draw_cfg: Dict[str, Any]
 ) -> Tuple[Figure, Axes]:
     """
@@ -21,18 +18,12 @@ def draw_bar(
         "x_axis": column name for x axis
         "y_axis": column name for y axis
     """
-    apply_rc_styles(style_cfg)
-
-    fig, axes = plt.subplots()
-
-    # set axes
-    set_axes(axes, draw_cfg["axes"])
-    # set color
+    # set color, !color will overrite colormap!
     color = None
-    if bar_cfg["colormap"] is not None:
-        color = get_colors(bar_cfg["colormap"])
-    if bar_cfg["color"] is not None:
-        color = bar_cfg["color"]
+    if draw_cfg["colormap"] is not None:
+        color = get_colors(draw_cfg["colormap"])
+    if draw_cfg["color"] is not None:
+        color = draw_cfg["color"]
     # set error bar
     data: pd.DataFrame = bar_cfg["data"]
     y_err = None
@@ -55,5 +46,3 @@ def draw_bar(
 
     if draw_cfg["bar_label"] is not None:
         axes.bar_label(bar_container, **draw_cfg["bar_label"])
-
-    return fig, axes

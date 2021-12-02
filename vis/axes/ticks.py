@@ -1,65 +1,83 @@
+import copy
 import math
-from typing import Callable, Dict, Any, List
+from typing import Dict, Any, List
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.ticker import StrMethodFormatter
-from matplotlib.axis import XAxis, YAxis
+from matplotlib.axis import Axis, XAxis, YAxis
 
 
-def _set_ticks(tick_fn: Callable, major_cfg: Dict[str, Any], minor_cfg: Dict[str, Any]):
-    # set major ticks
-    if major_cfg is not None:
-        major_ticks = _get_ticks(
-            min=major_cfg["min"],
-            max=major_cfg["max"],
-            step=major_cfg["step"]
-        )
-        tick_fn(
-            ticks=major_ticks,
-            labels=major_cfg["labels"],
-            minor=False
-        )
-    # set minor ticks
-    if minor_cfg is not None:
-        # set major ticks
-        minor_ticks = _get_ticks(
-            min=minor_cfg["min"],
-            max=minor_cfg["max"],
-            step=minor_cfg["step"]
-        )
-        tick_fn(
-            ticks=minor_ticks,
-            labels=minor_cfg["labels"],
-            minor=True
-        )
+class Ticks:
+    def __init__(self):
+        self.ticks = None
+        self.labels = None
+
+    def get_ticks(self) -> List[float]:
+        return self.ticks
+
+    def get_tick_labels(self) -> List[str]:
+        return self.labels
 
 
-def _get_ticks(min: float, max: float, step: float) -> np.ndarray:
-    num = math.floor((max - min) / step) + 1
-    ticks = np.linspace(min, max, num)
-    return ticks
+class ManualTicks(Ticks):
+    def __init__(self, ticks: List[float], labels: List[str] = None):
+        super().__init__()
+        self.ticks = ticks
+        self.labels = labels
 
 
-def _set_tick_formatters(axes: plt.Axes, x_cfg: Dict[str, Any], y_cfg: Dict[str, Any]):
-    # set x ticks
+class LinearTicks(Ticks):
+    def __init__(self, start: float, end: float, step: float) -> None:
+        super().__init__()
+        num = math.floor((end - start) / step) + 1
+        self.ticks = np.linspace(start, end, num)
+
+
+__TICKS__ = {
+    "manual": ManualTicks,
+    "linear": LinearTicks,
+}
+
+
+def _get_ticks(config: Dict[str, Any]) -> Ticks:
+    if config is None:
+        return None
+    config = copy.deepcopy(config)
+    name = config.pop("name")
+    return __TICKS__[name](**config)
+
+
+def set_tick_pos(
+    axes: plt.Axes,
+    tick_cfg: Dict[str, Any]
+):
     x_axis: XAxis = axes.get_xaxis()
-
-    if x_cfg["major"] is not None and x_cfg["major"]["format"] is not None:
-        x_axis.set_major_formatter(StrMethodFormatter(x_cfg["major"]["format"]))
-    if x_cfg["minor"] is not None and x_cfg["minor"]["format"] is not None:
-        x_axis.set_minor_formatter(StrMethodFormatter(x_cfg["minor"]["format"]))
-    # set y ticks
     y_axis: YAxis = axes.get_yaxis()
+    # load ticks
+    x_major = _get_ticks(tick_cfg["x_major"])
+    x_minor = _get_ticks(tick_cfg["x_minor"])
+    y_major = _get_ticks(tick_cfg["y_major"])
+    y_minor = _get_ticks(tick_cfg["y_minor"])
 
-    if y_cfg["major"] is not None and y_cfg["major"]["format"] is not None:
-        y_axis.set_major_formatter(StrMethodFormatter(y_cfg["major"]["format"]))
-    if y_cfg["minor"] is not None and y_cfg["minor"]["format"] is not None:
-        y_axis.set_minor_formatter(StrMethodFormatter(y_cfg["minor"]["format"]))
+    def set_ticks(axis: Axis, major_ticks: Ticks = None, minor_ticks: Ticks = None):
+        if major_ticks is not None:
+            ticks = major_ticks.get_ticks()
+            labels = major_ticks.get_tick_labels()
+            axis.set_ticks(
+                ticks=ticks,
+                labels=labels,
+                minor=False
+            )
+        if minor_ticks is not None:
+            ticks = minor_ticks.get_ticks()
+            labels = minor_ticks.get_tick_labels()
+            axis.set_ticks(
+                ticks=ticks,
+                labels=labels,
+                minor=True
+            )
 
+    set_ticks(x_axis, x_major, x_minor)
+    set_ticks(y_axis, y_major, y_minor)
 
-def set_ticks(axes: plt.Axes, x_cfg: Dict[str, Any], y_cfg: Dict[str, Any]):
-    _set_ticks(axes.set_xticks, x_cfg["major"], x_cfg["minor"])
-    _set_ticks(axes.set_yticks, y_cfg["major"], y_cfg["minor"])
-    _set_tick_formatters(axes, x_cfg, y_cfg)
 

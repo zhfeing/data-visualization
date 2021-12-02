@@ -32,9 +32,7 @@ if __name__ == "__main__":
     # read data files
     curves = cfg["curves"]
     for curve in curves:
-        data = pd.read_csv(curve["data_fp"])
-        scale_curve(data, column=curve["y_axis"], scale_val=curve["scale"])
-        curve["data"] = data
+        curve["data"] = pd.read_csv(curve["data_fp"])
 
     # set style sheets
     apply_rc_styles(cfg["style"])
