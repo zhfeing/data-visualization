@@ -34,7 +34,8 @@ def draw_lines(
             curve["y_axis"],
             data=curve["data"],
             label=curve["label"],
-            color=color[i]
+            color=color[i],
+            **curve["plot_cfg"]
         )
         lines.extend(line)
 

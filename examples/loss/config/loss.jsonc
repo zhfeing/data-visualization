@@ -4,25 +4,29 @@
             "data_fp": "tables/Val_Loss_dict_cnn.cls-Val-Loss_dict.csv",
             "label": "CNN",
             "x_axis": "step",
-            "y_axis": "value"
+            "y_axis": "value",
+            "plot_cfg": {}
         },
         {
             "data_fp": "tables/Val_Loss_dict_vit.cls-Val-Loss_dict.csv",
             "label": "ViT",
             "x_axis": "step",
-            "y_axis": "value"
+            "y_axis": "value",
+            "plot_cfg": {}
         },
         {
             "data_fp": "tables/Val_Loss_dict_cnn.kd.vit-Val-Loss_dict.csv",
             "label": "CNN-KD",
             "x_axis": "step",
-            "y_axis": "value"
+            "y_axis": "value",
+            "plot_cfg": {}
         },
         {
             "data_fp": "tables/Val_Loss_dict_vit.kd.cnn-Val-Loss_dict.csv",
             "label": "ViT-KD",
             "x_axis": "step",
-            "y_axis": "value"
+            "y_axis": "value",
+            "plot_cfg": {}
         }
     ],
     "style": {

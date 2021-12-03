@@ -5,14 +5,16 @@
             "label": "CNN",
             "x_axis": "step",
             "y_axis": "value",
-            "scale": 100
+            "scale": 100,
+            "plot_cfg": {}
         },
         {
             "data_fp": "tables/Val_Acc@1_vit-Val-Acc@1.csv",
             "label": "ViT",
             "x_axis": "step",
             "y_axis": "value",
-            "scale": 100
+            "scale": 100,
+            "plot_cfg": {}
         }
     ],
     "style": {
