@@ -1,18 +1,15 @@
 import argparse
 import os
-import pyjson5
 from typing import Any, Dict
 
+import pyjson5
+import h5py
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from vis.line import draw_lines
+from vis.heatmap import draw_heatmap
 from vis.msic import apply_rc_styles
 from vis.axes import set_axes
-
-
-def scale_curve(data: pd.DataFrame, column: str, scale_val: float = 100):
-    data[column] *= scale_val
 
 
 if __name__ == "__main__":
@@ -30,9 +27,9 @@ if __name__ == "__main__":
     os.makedirs(save_path, exist_ok=True)
 
     # read data files
-    curves = cfg["curves"]
-    for curve in curves:
-        curve["data"] = pd.read_csv(curve["data_fp"])
+    heatmap = cfg["heatmap"]
+    with h5py.File(heatmap["data_fp"]) as data_file:
+        heatmap["data"] = data_file[heatmap["name"]][:]
 
     # set style sheets
     apply_rc_styles(cfg["style"])
@@ -41,9 +38,10 @@ if __name__ == "__main__":
     draw_cfg = cfg["draw"]
     set_axes(axes, draw_cfg["axes"])
 
-    draw_lines(
+    draw_heatmap(
+        fig=fig,
         axes=axes,
-        curve_cfg=curves,
+        heatmap_cfg=heatmap,
         draw_cfg=draw_cfg
     )
     fig.savefig(save_fp)

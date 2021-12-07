@@ -6,7 +6,7 @@ from typing import Any, Dict
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from vis.vis_line import draw_lines
+from vis.line import draw_lines
 from vis.msic import apply_rc_styles
 from vis.axes import set_axes
 

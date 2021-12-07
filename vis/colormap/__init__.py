@@ -1,5 +1,9 @@
 from typing import List
 
+import matplotlib.pyplot as plt
+from matplotlib.colors import Colormap
+import seaborn as sns
+
 
 DESCREATE_COLOR = {
     "Color4Line": ["#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"],
@@ -11,6 +15,13 @@ DESCREATE_COLOR = {
 }
 
 
-def get_colors(name: str) -> List[str]:
+def get_descreate_colors(name: str) -> List[str]:
     return DESCREATE_COLOR[name]
 
+
+def get_colormaps(name: str) -> Colormap:
+    try:
+        cmap = plt.get_cmap(name)
+    except:
+        cmap = sns.color_palette(name, as_cmap=True)
+    return cmap

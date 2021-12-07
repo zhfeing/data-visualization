@@ -1,0 +1,63 @@
+{
+    "heatmap": {
+        "data_fp": "tables/feats.h5",
+        "name": "module.transformer.layers.0"
+    },
+    "style": {
+        "line": "examples/heatmap/config/lines.mplstyle",
+        "axes": "examples/heatmap/config/axes_ticks_grids.mplstyle",
+        "font": "examples/heatmap/config/font.mplstyle",
+        "figure": "examples/heatmap/config/figure.mplstyle",
+        "saving_figures": "examples/heatmap/config/saving_figures.mplstyle",
+        "text_latex": "examples/heatmap/config/text_latex.mplstyle",
+        "images": "examples/heatmap/config/images.mplstyle"
+    },
+    "draw": {
+        "axes": {
+            "title": "",
+            "x_label": "",
+            "y_label": "",
+            "x_limit": null,
+            "y_limit": null,
+            "x_scale": null,
+            "y_scale": null,
+            "ticker": {
+                "formatter": {
+                    "x_major": {
+                        "name": "str_method",
+                        "fmt": "{x}"
+                    },
+                    "x_minor": null,
+                    "y_major": {
+                        "name": "str_method",
+                        "fmt": "{x}"
+                    },
+                    "y_minor": null
+                },
+                "ticks": {
+                    "x_major": {
+                        "name": "manual",
+                        "ticks": [0, 15, 30, 45, 60, 75, 90, 105],
+                        "labels": ["0", "1", "2", "3", "4", "5", "6", "7"]
+                    },
+                    "x_minor": null,
+                    "y_major": {
+                        "name": "manual",
+                        "ticks": [0, 15, 30, 45, 60, 75, 90, 105],
+                        "labels": ["0", "1", "2", "3", "4", "5", "6", "7"]
+                    },
+                    "y_minor": null
+                }
+            }
+        },
+        "color_bar": {
+            "axes": {
+                "position": "right",
+                "size": 0.05,
+                "pad": 0.05
+            }
+        },
+        "colormap": "rocket"
+    },
+    "save_fp": "figures/heatmap.pdf"
+}

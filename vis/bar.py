@@ -4,7 +4,7 @@ import pandas as pd
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
 
-from vis.colormap import get_colors
+from vis.colormap import get_descreate_colors
 
 
 def draw_bar(
@@ -21,7 +21,7 @@ def draw_bar(
     # set color, !color will overrite colormap!
     color = None
     if draw_cfg["colormap"] is not None:
-        color = get_colors(draw_cfg["colormap"])
+        color = get_descreate_colors(draw_cfg["colormap"])
     if draw_cfg["color"] is not None:
         color = draw_cfg["color"]
     # set error bar
