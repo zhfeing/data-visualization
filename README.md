@@ -89,7 +89,9 @@ Currently there are plenty of choices to draw sci-style figures, such as `Gnuplo
 
 1. Basic Bins
 
-    > Path: `examples/lr_curves/vis_xxx.py`
+    > Path: `examples/base_bins/vis_base_bins.py`
+
+    ![basic-bins](doc/figures/basic-bins.png)
 
 2. Heatmap
 

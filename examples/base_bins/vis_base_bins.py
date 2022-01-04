@@ -38,8 +38,7 @@ if __name__ == "__main__":
     apply_rc_styles(cfg["style"])
     fig, axes = plt.subplots()
     # set axes
-    draw_cfg = cfg["draw"]
-    set_axes(axes, draw_cfg["axes"])
+    set_axes(axes, cfg["axes"])
 
     draw_bar(
         axes=axes,
@@ -47,7 +46,7 @@ if __name__ == "__main__":
         draw_cfg=cfg["draw"]
     )
 
-    rotate_x = cfg["draw"]["axes"]["rotate_x"]
+    rotate_x = cfg["axes"]["rotate_x"]
     if rotate_x is not None:
         plt.xticks(rotation=rotate_x)
 

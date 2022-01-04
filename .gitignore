@@ -1,4 +1,3 @@
-.vscode
 .idea
 
 # Byte-compiled / optimized / DLL files
@@ -11,5 +10,5 @@ __pycache__/
 save/
 run/
 run_*.sh
-backup
-figures
+backup/
+figures/
