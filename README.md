@@ -36,14 +36,44 @@ Currently there are plenty of choices to draw sci-style figures, such as `Gnuplo
 
         ```yaml
         error: # dict
-            err_pos: err_p # positive error
-            err_neg: err_n # negative error, optional if errors are symmetric
+            err_pos: err_p  # positive error
+            err_neg: err_n  # negative error, optional if errors are symmetric
         ```
 
-        * `x_axis` is the column name of the *x* axis in `data`
-        * `y_axis` is the column name of the *y* axis in `data`
+        * `x_axis` is the column name of the *x* axis in `data`, e.g. `method`.
+        * `y_axis` is the column name of the *y* axis in `data`, e.g. `AP`.
 
-    2. `draw_cfg`:
+    2. `draw_cfg`
+        * `bar` contains style settings of the *bar* in the figure, referenced to [matplotlib.axes.Axes.bar](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html), type: `dict`
+
+        ```yaml
+        bar: # dict
+            width: 0.45         # width of each rectangular
+            align: center       # alignment to x-ticks
+            edgecolor: black
+            linewidth: 0.8
+        ```
+
+        * `bar_label` contains style settings of the label of each rectangular in the bar plot, referenced to [matplotlib.axes.Axes.bar_label](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar_label.html), type `dict`
+
+        ```yaml
+        bar_label: # dict
+            fmt: "%.1f"
+            label_type: edge
+            fontsize: small
+        ```
+
+        * `error_bar` contains style settings of the error bar, referenced to [matplotlib.axes.Axes.errorbar](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html), type `dict`
+
+        ```yaml
+        error_bar: # dict
+            ecolor: black
+            elinewidth: 0.8
+            markeredgewidth: 0.8
+        ```
+
+        * `colormap` reference to Sec. [ColorMap](#ColorMap)
+        * `color` is a list of colors, **this will override the `colormap` setting**, type: `List[str]`
 
 2. Draw Heatmap
 
@@ -52,6 +82,8 @@ Currently there are plenty of choices to draw sci-style figures, such as `Gnuplo
 ## Style Settings
 
 ## Layout Settings
+
+## ColorMap
 
 ## Examples
 

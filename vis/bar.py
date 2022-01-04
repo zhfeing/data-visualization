@@ -18,7 +18,7 @@ def draw_bar(
         "x_axis": column name for x axis
         "y_axis": column name for y axis
     """
-    # set color, !color will overrite colormap!
+    # set color, !color will override colormap!
     color = None
     if draw_cfg["colormap"] is not None:
         color = get_descreate_colors(draw_cfg["colormap"])
