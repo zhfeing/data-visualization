@@ -91,7 +91,7 @@ Currently there are plenty of choices to draw sci-style figures, such as `Gnuplo
 
     > Path: `examples/base_bins/vis_base_bins.py`
 
-    ![basic-bins](doc/figures/basic-bins.png)
+    ![basic-bins](doc/fig/basic-bins.png)
 
 2. Heatmap
 
