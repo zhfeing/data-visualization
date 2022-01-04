@@ -1,0 +1,43 @@
+{
+    "heatmap": {
+        "data_fp": "tables/phi.h5",
+        "name": "phi"
+    },
+    "style": {
+        "line": "examples/heatmap/config/lines.mplstyle",
+        "axes": "examples/heatmap/config/axes_ticks_grids.mplstyle",
+        "font": "examples/heatmap/config/font.mplstyle",
+        "figure": "examples/heatmap/config/figure.mplstyle",
+        "saving_figures": "examples/heatmap/config/saving_figures.mplstyle",
+        "text_latex": "examples/heatmap/config/text_latex.mplstyle",
+        "images": "examples/heatmap/config/images.mplstyle"
+    },
+    "draw": {
+        "axes": {
+            "title": "",
+            "x_label": "",
+            "y_label": "",
+            "x_limit": null,
+            "y_limit": null,
+            "x_scale": null,
+            "y_scale": null,
+            "ticker": {
+                "formatter": {
+                    "x_major": null,
+                    "x_minor": null,
+                    "y_major": null,
+                    "y_minor": null
+                },
+                "ticks": {
+                    "x_major": null,
+                    "x_minor": null,
+                    "y_major": null,
+                    "y_minor": null
+                }
+            }
+        },
+        "color_bar": null,
+        "colormap": "coolwarm"
+    },
+    "save_fp": "figures/heatmap.pdf"
+}
